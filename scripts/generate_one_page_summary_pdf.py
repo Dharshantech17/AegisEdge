@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
 """
-AegisEdge: One-Page Executive Submission Summary Document
+AegisEdge: Minimalist One-Page Executive Submission Document
 Problem Statement 2: AI for Safer Communities (Namma AI Hackathon 2026)
 Generates: outputs/AegisEdge_OnePage_Executive_Summary_PS2.pdf
 
-STRICTLY 1 PAGE. Features active clickable links to the Master Google Drive Folder
-and Public GitHub Repository, core architectural metrics, benchmark results, and Stage 2 roadmap.
+STRICTLY 1 PAGE. Clean, spacious, and de-congested.
+Contains:
+1. Essential project metadata & hackathon track header
+2. Prominent System Architecture Diagram
+3. Master Google Drive Link (clickable) with hosted deliverables summary
+4. Public GitHub Repository link
 """
 
 import os
 from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable, Image
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.pdfgen import canvas
+from PIL import Image as PILImage
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUTPUT_DIR = os.path.join(BASE_DIR, "outputs")
@@ -41,14 +46,14 @@ class NumberedCanvas(canvas.Canvas):
 
     def draw_footer(self, page_count):
         self.saveState()
-        self.setFont("Times-Roman", 7.5)
-        self.setFillColor(colors.HexColor("#475569"))
+        self.setFont("Helvetica", 8)
+        self.setFillColor(colors.HexColor("#64748B"))
         self.setStrokeColor(colors.HexColor("#CBD5E1"))
         self.setLineWidth(0.5)
-        self.line(36, 26, 612 - 36, 26)
+        self.line(40, 30, 612 - 40, 30)
         
-        self.drawString(36, 16, "Namma AI Hackathon 2026 — PS2 (Safer Communities) | Nasscom CoE, Arm, IIIT Bangalore, UK-India TSI")
-        self.drawRightString(612 - 36, 16, f"Master Executive Submission Summary | Page {self._pageNumber} of {page_count}")
+        self.drawString(40, 18, "Namma AI Hackathon 2026 — Problem Statement 2 (AI for Safer Communities)")
+        self.drawRightString(612 - 40, 18, "AegisEdge Master Submission Document")
         self.restoreState()
 
 def build_pdf():
@@ -56,291 +61,163 @@ def build_pdf():
     doc = SimpleDocTemplate(
         PDF_PATH,
         pagesize=letter,
-        leftMargin=36,
-        rightMargin=36,
-        topMargin=26,
-        bottomMargin=32
+        leftMargin=40,
+        rightMargin=40,
+        topMargin=36,
+        bottomMargin=36
     )
 
     styles = getSampleStyleSheet()
 
     title_style = ParagraphStyle(
         'DocTitle',
-        fontName='Times-Bold',
-        fontSize=15.5,
-        leading=18,
+        fontName='Helvetica-Bold',
+        fontSize=18,
+        leading=22,
         textColor=colors.HexColor('#0F172A'),
         alignment=0
     )
     subtitle_style = ParagraphStyle(
         'DocSub',
-        fontName='Times-Bold',
-        fontSize=9.0,
-        leading=11.5,
-        textColor=colors.HexColor('#0052CC'),
+        fontName='Helvetica-Bold',
+        fontSize=10.5,
+        leading=14,
+        textColor=colors.HexColor('#0284C7'),
         alignment=0
     )
     meta_style = ParagraphStyle(
         'DocMeta',
-        fontName='Times-Roman',
-        fontSize=8.0,
-        leading=10.5,
+        fontName='Helvetica',
+        fontSize=8.5,
+        leading=12,
         textColor=colors.HexColor('#475569'),
         alignment=0
     )
     h1_style = ParagraphStyle(
         'SectionH1',
-        fontName='Times-Bold',
-        fontSize=9.5,
-        leading=11.5,
+        fontName='Helvetica-Bold',
+        fontSize=11,
+        leading=14,
         textColor=colors.HexColor('#0F172A'),
-        spaceBefore=3,
-        spaceAfter=1.5
+        spaceBefore=6,
+        spaceAfter=4
     )
     body_style = ParagraphStyle(
         'Body',
-        fontName='Times-Roman',
+        fontName='Helvetica',
+        fontSize=9.0,
+        leading=13.0,
+        textColor=colors.HexColor('#1E293B'),
+        alignment=0
+    )
+    caption_style = ParagraphStyle(
+        'Caption',
+        fontName='Helvetica-Oblique',
         fontSize=8.0,
-        leading=10.2,
-        textColor=colors.HexColor('#1E293B'),
-        alignment=4 # Justified
-    )
-    bullet_style = ParagraphStyle(
-        'Bullet',
-        fontName='Times-Roman',
-        fontSize=7.8,
-        leading=9.8,
-        textColor=colors.HexColor('#1E293B'),
-        leftIndent=8
-    )
-    th_style = ParagraphStyle(
-        'TH',
-        fontName='Times-Bold',
-        fontSize=7.5,
-        leading=9.0,
-        textColor=colors.black,
-        alignment=0
-    )
-    td_style = ParagraphStyle(
-        'TD',
-        fontName='Times-Roman',
-        fontSize=7.2,
-        leading=8.8,
-        textColor=colors.HexColor('#1E293B'),
-        alignment=0
-    )
-    td_bold = ParagraphStyle(
-        'TDBold',
-        fontName='Times-Bold',
-        fontSize=7.2,
-        leading=8.8,
-        textColor=colors.HexColor('#0F172A'),
-        alignment=0
+        leading=10.5,
+        textColor=colors.HexColor('#64748B'),
+        alignment=1 # Centered
     )
 
     story = []
 
-    # 1. Header Block
-    story.append(Paragraph("AegisEdge: Privacy-Preserving Edge AI for Crosswalk Safety Analytics", title_style))
+    # 1. Header Block (Clean, spacious)
+    story.append(Paragraph("AegisEdge: Privacy-Preserving Edge AI Architecture", title_style))
+    story.append(Spacer(1, 2))
     story.append(Paragraph("Problem Statement 2: AI for Safer Communities — Edge-Based Object Detection and Counting", subtitle_style))
+    story.append(Spacer(1, 4))
     story.append(Paragraph(
-        "Organizers: Nasscom CoE – IoT & AI | Arm | IIIT Bangalore | Supported by UK-India Technology Security Initiative<br/>"
-        "Target Hardware: Raspberry Pi 5 (Arm Cortex-A76 @ 2.4 GHz) | Runtime: Meta ExecuTorch 0.4+ with Arm XNNPACK (Neon SIMD)<br/>"
-        "System Architect & Contributor: Dharshan S (Dharshantech17 | dharshanselva2006@gmail.com)",
+        "<b>Organizers:</b> Nasscom CoE – IoT & AI | Arm | IIIT Bangalore | Supported by UK-India TSI<br/>"
+        "<b>Target Platform:</b> Raspberry Pi 5 (Quad-Core Arm Cortex-A76 @ 2.4 GHz) | <b>Runtime:</b> Meta ExecuTorch 0.4+ (Arm XNNPACK)<br/>"
+        "<b>System Architect & Contributor:</b> Dharshan S (Dharshantech17 | dharshanselva2006@gmail.com)",
         meta_style
     ))
-    story.append(Spacer(1, 3))
-    story.append(HRFlowable(width="100%", thickness=0.75, color=colors.HexColor("#CBD5E1"), spaceAfter=3, spaceBefore=1))
+    story.append(Spacer(1, 8))
+    story.append(HRFlowable(width="100%", thickness=1.0, color=colors.HexColor("#0284C7"), spaceAfter=10, spaceBefore=2))
 
-    # 2. Master Deliverables & Active Links Box (Highlighted)
-    link_html = (
-        f"<b>PRIMARY HACKATHON DELIVERABLES & VERIFIED ACCESS REPOSITORIES:</b><br/>"
-        f"• <b>Master Google Drive Folder (All Submission Assets):</b> "
-        f"<a href='{DRIVE_LINK}'><font color='#0052CC'><u>{DRIVE_LINK}</u></font></a><br/>"
-        f"  <i>(Contains: 60s HD Operations Demo Video, complete_detector_net.pt, benchmark_report.json, Sample Outputs 1 & 2, and Both PDFs)</i><br/>"
-        f"• <b>Public GitHub Repository (Complete Reproducible Codebase):</b> "
-        f"<a href='{GITHUB_LINK}'><font color='#0052CC'><u>{GITHUB_LINK}</u></font></a><br/>"
-        f"  <i>(Contains: ExecuTorch export scripts, automated 100-frame latency benchmark harness, test media generators, and technical documentation)</i>"
+    # 2. Prominent System Architecture Diagram
+    story.append(Paragraph("System Architecture & Data Flow Pipeline", h1_style))
+    story.append(Spacer(1, 4))
+
+    # Determine diagram path and aspect ratio
+    diag_path = os.path.join(OUTPUT_DIR, "overall_architecture_diagram.png")
+    if not os.path.exists(diag_path):
+        diag_path = os.path.join(OUTPUT_DIR, "AegisEdge AI Architecture Infographic.png")
+
+    target_w = 520
+    with PILImage.open(diag_path) as im:
+        orig_w, orig_h = im.size
+        aspect = orig_w / float(orig_h)
+        target_h = target_w / aspect
+
+    # Cap maximum height to ensure clean page fit
+    if target_h > 290:
+        target_h = 290
+        target_w = target_h * aspect
+
+    img_table = Table([[Image(diag_path, width=target_w, height=target_h)]], colWidths=[532])
+    img_table.setStyle(TableStyle([
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('BOX', (0, 0), (-1, -1), 0.75, colors.HexColor('#CBD5E1')),
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#F8FAFC')),
+        ('TOPPADDING', (0, 0), (-1, -1), 4),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+        ('LEFTPADDING', (0, 0), (-1, -1), 4),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 4),
+    ]))
+    story.append(img_table)
+    story.append(Spacer(1, 4))
+    story.append(Paragraph("Figure 1: AegisEdge End-to-End Pipeline — Ephemeral Ingestion, ExecuTorch Detection Core, Ground-Contact Mapping & Conflict Analytics.", caption_style))
+    
+    story.append(Spacer(1, 14))
+
+    # 3. Master Google Drive Link Box (Prominent & Clean)
+    drive_content = (
+        f"<font size=11 color='#0F172A'><b>MASTER GOOGLE DRIVE SUBMISSION FOLDER:</b></font><br/>"
+        f"<font size=10 color='#0284C7'><b><u><a href='{DRIVE_LINK}'>{DRIVE_LINK}</a></u></b></font><br/><br/>"
+        f"<font size=8.5 color='#334155'>"
+        f"<b>Hosted Deliverables in this Drive Folder:</b><br/>"
+        f"• <b>High-Quality Demo Video:</b> <code>AegisEdge_HighQuality_Demo.mp4</code> (720p HD, 60.00s Operations Dashboard with HUD telemetry)<br/>"
+        f"• <b>Complete Model Binary:</b> <code>complete_detector_net.pt</code> (14.76 MB PyTorch 2.x ExportedProgram for ExecuTorch)<br/>"
+        f"• <b>Machine-Readable Telemetry:</b> <code>benchmark_report.json</code> (100-frame raw latency, FPS & counting error telemetry)<br/>"
+        f"• <b>Academic Proposal Document:</b> <code>AegisEdge_Project_Proposal_PS2.pdf</code> (7-Page Proposal Document)<br/>"
+        f"• <b>Executive Deck & Benchmarks:</b> <code>AegisEdge_Executive_Deck_and_Benchmarks.pdf</code> (5-Page Empirical Validation Dossier)<br/>"
+        f"• <b>Sample Detection Outputs:</b> <code>sample_output_1_detection_hud.jpg</code> and <code>sample_output_2_municipal_report.jpg</code>"
+        f"</font>"
     )
-    link_data = [[Paragraph(link_html, body_style)]]
-    t_links = Table(link_data, colWidths=[540])
-    t_links.setStyle(TableStyle([
+    t_drive = Table([[Paragraph(drive_content, body_style)]], colWidths=[532])
+    t_drive.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#F1F5F9')),
-        ('BOX', (0, 0), (-1, -1), 1.0, colors.HexColor('#94A3B8')),
-        ('TOPPADDING', (0, 0), (-1, -1), 4.0),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 4.0),
-        ('LEFTPADDING', (0, 0), (-1, -1), 6.5),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 6.5),
+        ('BOX', (0, 0), (-1, -1), 1.25, colors.HexColor('#0284C7')),
+        ('TOPPADDING', (0, 0), (-1, -1), 8),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+        ('LEFTPADDING', (0, 0), (-1, -1), 12),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 12),
     ]))
-    story.append(t_links)
-    story.append(Spacer(1, 4))
+    story.append(t_drive)
 
-    # 3. Two-Column Layout: Problem Context & Technical Architecture
-    col1_content = [
-        Paragraph("1. Problem Grounding & Societal Imperative", h1_style),
-        Paragraph(
-            "Metropolitan intersections and school zones in Indian cities like Bengaluru experience severe pedestrian exposure "
-            "at unsignalized crossings. Traditional CCTV streaming over cellular networks incurs high recurring bandwidth costs "
-            "(> $50/camera/month), latency (> 800 ms), and severe citizen privacy liabilities under India's Digital Personal Data "
-            "Protection (DPDP) Act 2023. Simple headcounts fail to capture dangerous vehicle-pedestrian conflict dynamics. "
-            "AegisEdge solves this through on-device intelligence delivering objective safety telemetry with zero cloud video exfiltration.",
-            body_style
-        ),
-        Spacer(1, 3),
-        Paragraph("2. Core Engineering Innovations", h1_style),
-        Paragraph("• <b>Complete Neural Program Export:</b> Captures full SSDLite320-MobileNetV3 computation graph—including backbone and multiscale detection heads—into a unified 14.76 MB PyTorch 2.x program, avoiding host-side Python post-processing stalls.", bullet_style),
-        Paragraph("• <b>Pavement Ground-Contact Pinpointing:</b> Evaluates road contact point ((x1+x2)/2, y2) rather than bounding-box centroids, eliminating 15-25% perspective errors when determining crosswalk inclusion.", bullet_style),
-        Paragraph("• <b>Heuristic Conflict Exposure Duration (CED):</b> Quantifies cumulative pedestrian-vehicle carriageway co-occupancy (CED = sum I(t) * dt) in physical video seconds with corridor-bounded proximity gating (|xp - xv| / W <= 0.35).", bullet_style),
-        Paragraph("• <b>100% Volatile DDR Privacy:</b> Video decoding and tensor inference execute in ephemeral RAM ring buffers; frames are discarded instantly, providing statutory immunity under DPDP Act 2023.", bullet_style),
-    ]
+    story.append(Spacer(1, 10))
 
-    col2_content = [
-        Paragraph("3. Hardware Profile & Target Feasibility", h1_style),
-        Paragraph("• <b>Target Platform:</b> Raspberry Pi 5 (Quad Cortex-A76 @ 2.4 GHz, 64-bit OS Bookworm).", bullet_style),
-        Paragraph("• <b>SIMD Acceleration:</b> Meta ExecuTorch 0.4+ utilizing Arm XNNPACK backend with Arm Neon SDOT INT8 instructions.", bullet_style),
-        Paragraph("• <b>Memory & Power:</b> Standalone C++ ExecuTorch runtime requires < 180 MB RAM (< 5% of 4GB capacity); peak power < 8.5W.", bullet_style),
-        Spacer(1, 3),
-        Paragraph("4. Stage 2 Live Evaluation Roadmap", h1_style),
-        Paragraph("• <b>Phase 1 (Pre-Hackathon Enablement):</b> Arm/IIIT-B training; INT8 Post-Training Quantization calibration (14.76 MB -> 3.81 MB target).", bullet_style),
-        Paragraph("• <b>Phase 2 (Hardware Flashing):</b> Flashing ExecuTorch .pte binary to Raspberry Pi 5; verifying AArch64 Neon SDOT SIMD execution.", bullet_style),
-        Paragraph("• <b>Phase 3 (Live Hackathon Ingestion):</b> Ingesting official organizer test media, verifying real-time counting against ground truth, and exporting JSON telemetry.", bullet_style),
-        Spacer(1, 3),
-        Paragraph("5. Civic Impact & Urban Interventions", h1_style),
-        Paragraph("Empirical CED telemetry transforms video into actionable traffic engineering data: CED > 3.0s justifies pedestrian refuge islands, raised crosswalks, or Leading Pedestrian Intervals (LPI).", body_style),
-    ]
-
-    t_cols = Table([[col1_content, col2_content]], colWidths=[270, 270])
-    t_cols.setStyle(TableStyle([
-        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-        ('LEFTPADDING', (0, 0), (0, 0), 0),
-        ('RIGHTPADDING', (0, 0), (0, 0), 6),
-        ('LEFTPADDING', (1, 0), (1, 0), 6),
-        ('RIGHTPADDING', (1, 0), (1, 0), 0),
-        ('TOPPADDING', (0, 0), (-1, -1), 0),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+    # 4. GitHub Code Repository Box (Clean & Minimalist)
+    git_content = (
+        f"<font size=9.5 color='#0F172A'><b>PUBLIC GITHUB REPOSITORY (SOURCE CODE & SCRIPTS):</b></font><br/>"
+        f"<font size=9.0 color='#0052CC'><b><u><a href='{GITHUB_LINK}'>{GITHUB_LINK}</a></u></b></font> &nbsp;|&nbsp; "
+        f"<font size=8.0 color='#64748B'>Full Python/ExecuTorch export pipeline, latency benchmarks, and documentation.</font>"
+    )
+    t_git = Table([[Paragraph(git_content, body_style)]], colWidths=[532])
+    t_git.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#FFFFFF')),
+        ('BOX', (0, 0), (-1, -1), 0.75, colors.HexColor('#CBD5E1')),
+        ('TOPPADDING', (0, 0), (-1, -1), 6),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
+        ('LEFTPADDING', (0, 0), (-1, -1), 10),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 10),
     ]))
-    story.append(t_cols)
-    story.append(Spacer(1, 4))
-
-    # 4. Empirical Benchmark Telemetry & Validation Table
-    story.append(Paragraph("6. Measured Empirical Benchmarks & Verification Telemetry (100-Frame Evaluation Clip)", h1_style))
-    bench_data = [
-        [Paragraph("Evaluation Parameter / KPI", th_style), Paragraph("Verified Development Baseline (Host)", th_style), Paragraph("Stage 2 Proposed Target (Pi 5)", th_style), Paragraph("Evaluation Verification Method", th_style)],
-        [
-            Paragraph("Pure Model Inference Latency", td_bold),
-            Paragraph("<b>115.94 ms</b> (Mean) | <b>127.43 ms</b> (p95)", td_style),
-            Paragraph("< 100 ms per frame (INT8 Neon)", td_style),
-            Paragraph("Wall-clock timer over 100 continuous frames", td_style)
-        ],
-        [
-            Paragraph("End-to-End Pipeline Latency & FPS", td_bold),
-            Paragraph("<b>121.51 ms</b> (Mean) | <b>8.23 FPS</b> (Sustained)", td_style),
-            Paragraph(">= 10 FPS sustained processing", td_style),
-            Paragraph("Ingestion + Model + CED Analytics Engine", td_style)
-        ],
-        [
-            Paragraph("Per-Frame Time Budget Breakdown", td_bold),
-            Paragraph("Preprocess: 3.22 ms (2.6%) | Forward: 115.94 ms (95.4%) | Post-process: 2.35 ms (1.9%)", td_style),
-            Paragraph("Minimal post-processing overhead", td_style),
-            Paragraph("Direct AOT graph execution profiling", td_style)
-        ],
-        [
-            Paragraph("Object Counting Accuracy (MACE)", td_bold),
-            Paragraph("<b>100.0% Accuracy</b> (0.0 MACE, 0.0% RCE)", td_style),
-            Paragraph("MACE <= 1.0, Relative Error <= 10%", td_style),
-            Paragraph("Evaluated against organizer ground truth", td_style)
-        ],
-        [
-            Paragraph("Conflict Exposure Telemetry (CED)", td_bold),
-            Paragraph("<b>2.50s</b> cumulative CED across 1 episode (12.0 CER)", td_style),
-            Paragraph("Continuous co-occupancy tracking", td_style),
-            Paragraph("Ray-casting polygon & proximity gating", td_style)
-        ],
-        [
-            Paragraph("Data Privacy & Cloud Video Egress", td_bold),
-            Paragraph("<b>0.0 MB</b> video egress (Anonymous JSON only)", td_style),
-            Paragraph("100% Volatile DDR execution", td_style),
-            Paragraph("Full statutory compliance with DPDP Act 2023", td_style)
-        ],
-    ]
-    t_bench = Table(bench_data, colWidths=[125, 165, 115, 135])
-    t_bench.setStyle(TableStyle([
-        ('LINEABOVE', (0, 0), (-1, 0), 1.0, colors.black),
-        ('LINEBELOW', (0, 0), (-1, 0), 0.75, colors.black),
-        ('LINEBELOW', (0, -1), (-1, -1), 1.0, colors.black),
-        ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#CBD5E1')),
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 2.2),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.2),
-        ('LEFTPADDING', (0, 0), (-1, -1), 4.5),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 4.5),
-    ]))
-    story.append(t_bench)
-    story.append(Spacer(1, 4))
-
-    # 5. Master Deliverables Checklist Table
-    story.append(Paragraph("7. Official Hackathon Portal & Drive Deliverables Inventory", h1_style))
-    deliv_data = [
-        [Paragraph("Submission Deliverable", th_style), Paragraph("Repository Location / Cloud Link", th_style), Paragraph("File Size", th_style), Paragraph("Official Verification Status", th_style)],
-        [
-            Paragraph("Master Google Drive Link", td_bold),
-            Paragraph(f"<a href='{DRIVE_LINK}'><font color='#0052CC'><u>Public Drive Folder</u></font></a>", td_style),
-            Paragraph("Shared Folder", td_style),
-            Paragraph("Hosts HD demo video, .pt model, JSON telemetry & sample outputs", td_style)
-        ],
-        [
-            Paragraph("Public GitHub Repository", td_bold),
-            Paragraph(f"<a href='{GITHUB_LINK}'><font color='#0052CC'><u>Dharshantech17/AegisEdge</u></font></a>", td_style),
-            Paragraph("Full Repository", td_style),
-            Paragraph("Complete reproducible source code, export scripts & benchmark suite", td_style)
-        ],
-        [
-            Paragraph("High-Quality Demo Video", td_bold),
-            Paragraph("outputs/AegisEdge_HighQuality_Demo.mp4", td_style),
-            Paragraph("20.72 MB", td_style),
-            Paragraph("1280x720 HD MP4 (25 FPS, exactly 60.00s operations dashboard walkthrough)", td_style)
-        ],
-        [
-            Paragraph("Complete Detector Net Export", td_bold),
-            Paragraph("models/complete_detector_net.pt", td_style),
-            Paragraph("14.76 MB", td_style),
-            Paragraph("PyTorch 2.x ExportedProgram (AOT captured backbone + multiscale heads)", td_style)
-        ],
-        [
-            Paragraph("Machine-Readable Telemetry", td_bold),
-            Paragraph("outputs/benchmark_report.json", td_style),
-            Paragraph("74.4 KB", td_style),
-            Paragraph("100-frame raw telemetry log with latencies, throughput, and error metrics", td_style)
-        ],
-        [
-            Paragraph("Technical Proposal PDF (Slot 2)", td_bold),
-            Paragraph("outputs/AegisEdge_Project_Proposal_PS2.pdf", td_style),
-            Paragraph("2.74 MB", td_style),
-            Paragraph("7-page comprehensive proposal with STIX math, architecture & DPDP analysis", td_style)
-        ],
-        [
-            Paragraph("Executive Deck PDF (Slot 1)", td_bold),
-            Paragraph("outputs/AegisEdge_Executive_Deck_and_Benchmarks.pdf", td_style),
-            Paragraph("560.7 KB", td_style),
-            Paragraph("5-page benchmark validation dossier with HUD telemetry & decision matrix", td_style)
-        ],
-    ]
-    t_deliv = Table(deliv_data, colWidths=[120, 140, 60, 220])
-    t_deliv.setStyle(TableStyle([
-        ('LINEABOVE', (0, 0), (-1, 0), 1.0, colors.black),
-        ('LINEBELOW', (0, 0), (-1, 0), 0.75, colors.black),
-        ('LINEBELOW', (0, -1), (-1, -1), 1.0, colors.black),
-        ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#CBD5E1')),
-        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 2.2),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.2),
-        ('LEFTPADDING', (0, 0), (-1, -1), 4.5),
-        ('RIGHTPADDING', (0, 0), (-1, -1), 4.5),
-    ]))
-    story.append(t_deliv)
+    story.append(t_git)
 
     doc.build(story, canvasmaker=NumberedCanvas)
-    print(f"[+] SUCCESS! One-Page Summary PDF compiled successfully at:")
+    print(f"[+] SUCCESS! Clean One-Page Summary PDF compiled at:")
     print(f"    --> {PDF_PATH}")
     print(f"    File Size: {os.path.getsize(PDF_PATH) / 1024:.1f} KB")
 
