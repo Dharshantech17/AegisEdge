@@ -497,11 +497,18 @@ def build_perfect_deck():
     story.append(Spacer(1, 4))
     # Section 6
     story.append(Paragraph("6. Live Simulation Visual Telemetry Verification", styles['h1']))
+    story.append(Paragraph(
+        "The on-device detection and heuristic conflict analytics pipeline was evaluated across sequential crosswalk video streams. Real-time inference generates multi-class object bounding boxes (pedestrians in green, vehicles in blue), pavement ground-contact points ((x1+x2)/2, y2), dynamic proximity vectors, and autonomous co-occupancy alert telemetry without cloud video egress:",
+        styles['body']
+    ))
+    story.append(Spacer(1, 3))
 
-    # Figure B1: Live HUD Simulation (450 pt wide x 215 pt high)
-    frame_450 = os.path.join(QC_DIR, "frame_450.jpg")
+    # Figure B1: Live HUD Simulation (380 pt wide x 170 pt high)
+    frame_450 = os.path.join(OUTPUT_DIR, "sample_output_1_detection_hud.jpg")
+    if not os.path.exists(frame_450):
+        frame_450 = os.path.join(QC_DIR, "frame_450.jpg")
     if os.path.exists(frame_450):
-        story.append(Image(frame_450, width=450, height=215, hAlign='CENTER'))
+        story.append(Image(frame_450, width=380, height=170, hAlign='CENTER'))
         story.append(Paragraph(
             "Figure B1: Live AegisEdge Crosswalk AI Telemetry HUD — Multi-class bounding boxes with road-contact dots, dual Host vs. Pi 5 HUD, and active co-occupancy exposure status.",
             styles['caption']
@@ -513,11 +520,18 @@ def build_perfect_deck():
     # PAGE 4: MUNICIPAL REPORTING, ACCURACY PROOF & CIVIC DECISION MATRIX
     # =========================================================================
     story.append(Paragraph("7. Actionable Municipal Crosswalk Report Visual Verification", styles['h1']))
+    story.append(Paragraph(
+        "Localized edge inference aggregates discrete detections into an automated Municipal Crosswalk Audit Report. The system quantifies total pedestrian volumes, vehicular counts, and cumulative Conflict Exposure Duration (CED) to provide civic authorities with empirical infrastructure justification:",
+        styles['body']
+    ))
+    story.append(Spacer(1, 3))
 
-    # Figure B2: Municipal Crosswalk Report (450 pt wide x 205 pt high)
-    frame_950 = os.path.join(QC_DIR, "frame_950.jpg")
+    # Figure B2: Municipal Crosswalk Report (380 pt wide x 170 pt high)
+    frame_950 = os.path.join(OUTPUT_DIR, "sample_output_2_municipal_report.jpg")
+    if not os.path.exists(frame_950):
+        frame_950 = os.path.join(QC_DIR, "frame_950.jpg")
     if os.path.exists(frame_950):
-        story.append(Image(frame_950, width=450, height=205, hAlign='CENTER'))
+        story.append(Image(frame_950, width=380, height=170, hAlign='CENTER'))
         story.append(Paragraph(
             "Figure B2: Exemplar Municipal Crosswalk Audit Report — Automatically generated local edge intelligence detailing pedestrian volumes, vehicle counts, CED, and CER.",
             styles['caption']
@@ -532,7 +546,7 @@ def build_perfect_deck():
     ))
 
     # Equation 5: MACE & RCE Formula
-    story.append(make_equation_flowable("eq_mace.png", 450, 45.3, "(5)", styles))
+    story.append(make_equation_flowable("eq_mace.png", 380, 38.3, "(5)", styles))
 
     count_data = [
         [Paragraph("Target Object Category", styles['th']), Paragraph("Organizer Ground Truth", styles['th']), Paragraph("AegisEdge Verified Count", styles['th']), Paragraph("Absolute Error", styles['th']), Paragraph("Counting Accuracy (%)", styles['th'])],
@@ -548,14 +562,15 @@ def build_perfect_deck():
         ('LINEBELOW', (0, -1), (-1, -1), 1.0, colors.black),
         ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#888888')),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 3.5),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 3.5),
+        ('TOPPADDING', (0, 0), (-1, -1), 2.5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5),
         ('LEFTPADDING', (0, 0), (-1, -1), 4.5),
         ('RIGHTPADDING', (0, 0), (-1, -1), 4.5),
     ]))
     story.append(t_count)
 
     story.append(Spacer(1, 3))
+
     # Section 9
     story.append(Paragraph("9. Civic Decision-Making Matrix (Edge Insights to Urban Interventions)", styles['h1']))
     matrix_data = [
@@ -592,8 +607,8 @@ def build_perfect_deck():
         ('LINEBELOW', (0, -1), (-1, -1), 1.0, colors.black),
         ('INNERGRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#888888')),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 3.5),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 3.5),
+        ('TOPPADDING', (0, 0), (-1, -1), 2.5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5),
         ('LEFTPADDING', (0, 0), (-1, -1), 4.5),
         ('RIGHTPADDING', (0, 0), (-1, -1), 4.5),
     ]))
@@ -604,6 +619,7 @@ def build_perfect_deck():
     # =========================================================================
     # PAGE 5: REPRODUCIBILITY PROTOCOL & MASTER SUBMISSION VERIFICATION
     # =========================================================================
+    # Section 10
     story.append(Paragraph("10. Step-by-Step Benchmark Reproducibility Protocol", styles['h1']))
     story.append(Paragraph(
         "To enable immediate, autonomous reproduction of all benchmark numbers and model exports by organizers and evaluators, the repository includes end-to-end execution scripts requiring zero manual intervention:",
@@ -640,7 +656,7 @@ def build_perfect_deck():
         [
             Paragraph("High-Quality Demo Video", styles['td']),
             Paragraph("outputs/AegisEdge_HighQuality_Demo.mp4", styles['td']),
-            Paragraph("16.01 MB", styles['td']),
+            Paragraph("20.72 MB", styles['td']),
             Paragraph("720p HD MP4 (25 FPS, 60s / 1-min duration)", styles['td'])
         ],
         [
@@ -658,7 +674,7 @@ def build_perfect_deck():
         [
             Paragraph("Technical Proposal PDF", styles['td']),
             Paragraph("outputs/AegisEdge_Project_Proposal_PS2.pdf", styles['td']),
-            Paragraph("2.52 MB", styles['td']),
+            Paragraph("2.74 MB", styles['td']),
             Paragraph("7-page academic proposal document", styles['td'])
         ],
     ]
