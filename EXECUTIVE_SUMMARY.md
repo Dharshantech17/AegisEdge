@@ -1,8 +1,4 @@
-# AegisEdge — Master Submission Document
-**Problem Statement 2: AI for Safer Communities — Edge-Based Object Detection and Counting**  
-**Organizers:** Nasscom CoE – IoT & AI | Arm | IIIT Bangalore | Supported by UK-India TSI  
-**Target Platform:** Raspberry Pi 5 (Quad-Core Arm Cortex-A76 @ 2.4 GHz) | **Runtime:** Meta ExecuTorch 0.4+ (Arm XNNPACK)  
-**System Architect & Contributor:** Dharshan S (Dharshantech17 | dharshanselva2006@gmail.com)
+# AegisEdge: Privacy-Preserving Edge AI Architecture
 
 ---
 
