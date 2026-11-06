@@ -1,0 +1,30 @@
+# Python Virtual Environments
+venv/
+env/
+.venv/
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# OS & Editor Specific Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Intermediate Scratch Outputs & Test Artifacts
+outputs/annotated_video.mp4
+outputs/annotated_frame_*.jpg
+outputs/test_*.pdf
+outputs/.mpl_cache/
+outputs/pdf_pages/
+outputs/deck_pages/
+outputs/preview_*/
+outputs/qc_frames/
+scripts/test_*.py
