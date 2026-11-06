@@ -11,7 +11,7 @@ The portal allows you to upload **2 files**. Here is the exact mapping:
 
 ### Slot 1: Executive Deck & Empirical Benchmark Report (File 1)
 * **File to Upload:** `outputs/AegisEdge_Executive_Deck_and_Benchmarks.pdf`
-* **File Size:** ~410 KB (5 Pages)
+* **File Size:** ~561 KB (5 Pages)
 * **What it contains:**
   * Executive Benchmark Scorecard (measured wall-clock latencies & sustained FPS).
   * Complete neural model export diagnostics (`[1, 3, 320, 320]` input, `[1, 3234, 4]` boxes, `[1, 3234, 91]` logits).
@@ -24,7 +24,7 @@ The portal allows you to upload **2 files**. Here is the exact mapping:
 
 ### Slot 2: Academic Project Proposal Document (File 2)
 * **File to Upload:** `outputs/AegisEdge_Project_Proposal_PS2.pdf`
-* **File Size:** ~2.58 MB (7 Pages)
+* **File Size:** ~2.74 MB (7 Pages)
 * **What it contains:**
   * Problem Grounding & Societal Context (Bengaluru pedestrian crossing challenges).
   * End-to-End System Pipeline & Architecture Infographic (**Figure 1**).
@@ -43,7 +43,7 @@ The portal allows you to upload **2 files**. Here is the exact mapping:
 | **1. Process 10–20s clip or 10–20 images** | `inference/run_detector.py`<br>`data/test_video.mp4` | 100-frame video clip (4.0s @ 25 FPS) and 20 sample images processed via automated ingestion. |
 | **2. Approved Pretrained Model on ExecuTorch & Pi** | `models/complete_detector_net.pt`<br>`export/export_detector.py` | SSDLite320-MobileNetV3 Large (14.76 MB) captured via `torch.export.export()` for ExecuTorch + Arm XNNPACK lowering on Raspberry Pi 5. |
 | **3. Detect predefined categories & display counts** | `outputs/annotated_video.mp4`<br>`outputs/benchmark_report.json` | Detects pedestrians (`person`) and vehicles (`car`, `bus`, `truck`, `motorcycle`). Real-time per-frame count table + visual HUD. |
-| **4. Submit categories, counts & 2 sample outputs** | `outputs/qc_frames/frame_450.jpg`<br>`outputs/qc_frames/frame_950.jpg` | Verified 100% counting accuracy (0.0 MACE).<br>• **Sample 1:** Detection HUD (`frame_450.jpg`).<br>• **Sample 2:** Municipal Report (`frame_950.jpg`). |
+| **4. Submit categories, counts & 2 sample outputs** | `outputs/sample_output_1_detection_hud.jpg`<br>`outputs/sample_output_2_municipal_report.jpg` | Verified 100% counting accuracy (0.0 MACE).<br>• **Sample 1:** Detection HUD (`sample_output_1_detection_hud.jpg`).<br>• **Sample 2:** Municipal Report (`sample_output_2_municipal_report.jpg`). |
 | **5. Report average inference time, model & throughput** | `outputs/benchmark_report.json`<br>Table 3 in Benchmark Dossier | • Model: SSDLite320-MobileNetV3<br>• Pure Inference Latency: **115.94 ms** (p95: 127.43 ms)<br>• Pipeline Latency: **121.51 ms**<br>• Throughput: **8.23 FPS** (Target Pi 5: >= 10 FPS) |
 | **6. Explain societal issue, how it helps & 1 practical application (< 2 mins)** | `outputs/AegisEdge_HighQuality_Demo.mp4`<br>Section 1 & 4 in Proposal PDF | • **Video Duration:** Exactly **60 seconds (1.00 minute)**.<br>• Explains pedestrian safety issue, cloud bandwidth failure, and municipal crosswalk audit application. |
 
@@ -56,15 +56,14 @@ All mandatory files are located in your workspace:
 ```
 NAMMA AI/
 ├── outputs/
-│   ├── AegisEdge_Project_Proposal_PS2.pdf          [2.58 MB]  --> UPLOAD TO PORTAL (SLOT 2)
-│   ├── AegisEdge_Executive_Deck_and_Benchmarks.pdf   [410 KB]   --> UPLOAD TO PORTAL (SLOT 1)
-│   ├── AegisEdge_HighQuality_Demo.mp4             [16.01 MB]  --> Host on Drive & Link in PDFs
+│   ├── AegisEdge_Project_Proposal_PS2.pdf          [2.74 MB]  --> UPLOAD TO PORTAL (SLOT 2)
+│   ├── AegisEdge_Executive_Deck_and_Benchmarks.pdf   [561 KB]   --> UPLOAD TO PORTAL (SLOT 1)
+│   ├── AegisEdge_HighQuality_Demo.mp4             [20.72 MB]  --> Host on Drive & Link in PDFs
 │   ├── benchmark_report.json                       [74.4 KB]  --> Host on GitHub & Drive
-│   └── qc_frames/
-│       ├── frame_450.jpg                          [116.9 KB]  --> Sample Detection Output 1
-│       └── frame_950.jpg                          [172.4 KB]  --> Sample Detection Output 2
+│   ├── sample_output_1_detection_hud.jpg          [184.0 KB]  --> Sample Detection Output 1
+│   └── sample_output_2_municipal_report.jpg       [225.3 KB]  --> Sample Detection Output 2
 ├── models/
-│   └── complete_detector_net.pt                   [14.76 MB]  --> Host on GitHub / Drive
+│   └── complete_detector_net.pt                   [14.76 MB]  --> Host on GitHub & Drive
 ├── export/
 │   └── export_detector.py                         [Model Export Script for ExecuTorch]
 ├── inference/
@@ -83,11 +82,13 @@ NAMMA AI/
 2. **Upload Large Files to a Public Google Drive Folder:**
    * Create a Google Drive folder set to *"Anyone with the link can view"*.
    * Upload:
-     1. `AegisEdge_HighQuality_Demo.mp4` (60s HD video, 16.01 MB)
+     1. `AegisEdge_HighQuality_Demo.mp4` (60s HD video, 20.72 MB)
      2. `complete_detector_net.pt` (14.76 MB)
      3. `benchmark_report.json` (74.4 KB)
-     4. `AegisEdge_Project_Proposal_PS2.pdf` (2.58 MB)
-     5. `AegisEdge_Executive_Deck_and_Benchmarks.pdf` (410 KB)
+     4. `AegisEdge_Project_Proposal_PS2.pdf` (2.74 MB)
+     5. `AegisEdge_Executive_Deck_and_Benchmarks.pdf` (561 KB)
+     6. `sample_output_1_detection_hud.jpg` (184 KB)
+     7. `sample_output_2_municipal_report.jpg` (225 KB)
 3. **Upload the 2 PDFs to the Portal:**
    * **File 1:** `outputs/AegisEdge_Executive_Deck_and_Benchmarks.pdf`
    * **File 2:** `outputs/AegisEdge_Project_Proposal_PS2.pdf`

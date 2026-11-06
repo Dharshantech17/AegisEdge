@@ -257,9 +257,9 @@ AegisEdge/
 │   ├── sample_clip.mp4                    # 100-frame synthetic test video (25 FPS)
 │   └── sample_frame_*.jpg                 # 7 sequential test frames
 ├── outputs/
-│   ├── AegisEdge_Project_Proposal_PS2.pdf # Master Project Proposal (7 Pages, 2.28 MB)
-│   ├── AegisEdge_Executive_Deck_and_Benchmarks.pdf # Executive Deck & Benchmarks (5 Pages, 48 KB)
-│   ├── AegisEdge_HighQuality_Demo.mp4     # Presentation-Grade Demo Video (720p HD, 60s, 16.01 MB)
+│   ├── AegisEdge_Project_Proposal_PS2.pdf # Master Project Proposal (7 Pages, 2.74 MB)
+│   ├── AegisEdge_Executive_Deck_and_Benchmarks.pdf # Executive Deck & Benchmarks (5 Pages, 561 KB)
+│   ├── AegisEdge_HighQuality_Demo.mp4     # Presentation-Grade Demo Video (720p HD, 60s, 20.72 MB)
 │   ├── benchmark_report.json              # Machine-Readable Performance Benchmark Report (74.4 KB)
 │   ├── sample_output_1_detection_hud.jpg  # Sample Output 1: Real-time detection HUD with ground dots
 │   ├── sample_output_2_municipal_report.jpg # Sample Output 2: Municipal crosswalk exposure report
