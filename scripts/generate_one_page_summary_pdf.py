@@ -5,11 +5,7 @@ Problem Statement 2: AI for Safer Communities (Namma AI Hackathon 2026)
 Generates: outputs/AegisEdge_OnePage_Executive_Summary_PS2.pdf
 
 STRICTLY 1 PAGE. Clean, spacious, and de-congested.
-Contains:
-1. Essential project metadata & hackathon track header
-2. Prominent System Architecture Diagram
-3. Master Google Drive Link (clickable) with hosted deliverables summary
-4. Public GitHub Repository link
+Uses: outputs/AegisEdge AI Architecture Infographic.png
 """
 
 import os
@@ -26,6 +22,7 @@ PDF_PATH = os.path.join(OUTPUT_DIR, "AegisEdge_OnePage_Executive_Summary_PS2.pdf
 
 DRIVE_LINK = "https://drive.google.com/drive/folders/1TI-24bI7EP6mereBzB6yHRrzYKseYXGi?usp=sharing"
 GITHUB_LINK = "https://github.com/Dharshantech17/AegisEdge"
+INFOGRAPHIC_PATH = os.path.join(OUTPUT_DIR, "AegisEdge AI Architecture Infographic.png")
 
 class NumberedCanvas(canvas.Canvas):
     def __init__(self, *args, **kwargs):
@@ -121,7 +118,7 @@ def build_pdf():
 
     story = []
 
-    # 1. Header Block (Clean, spacious)
+    # 1. Header Block (Using exact requested wording)
     story.append(Paragraph("AegisEdge: Privacy-Preserving Edge AI Architecture", title_style))
     story.append(Spacer(1, 2))
     story.append(Paragraph("Problem Statement 2: AI for Safer Communities — Edge-Based Object Detection and Counting", subtitle_style))
@@ -135,27 +132,21 @@ def build_pdf():
     story.append(Spacer(1, 8))
     story.append(HRFlowable(width="100%", thickness=1.0, color=colors.HexColor("#0284C7"), spaceAfter=10, spaceBefore=2))
 
-    # 2. Prominent System Architecture Diagram
-    story.append(Paragraph("System Architecture & Data Flow Pipeline", h1_style))
+    # 2. Prominent Architecture Infographic
+    story.append(Paragraph("AegisEdge AI Architecture Infographic", h1_style))
     story.append(Spacer(1, 4))
 
-    # Determine diagram path and aspect ratio
-    diag_path = os.path.join(OUTPUT_DIR, "overall_architecture_diagram.png")
-    if not os.path.exists(diag_path):
-        diag_path = os.path.join(OUTPUT_DIR, "AegisEdge AI Architecture Infographic.png")
-
     target_w = 520
-    with PILImage.open(diag_path) as im:
+    with PILImage.open(INFOGRAPHIC_PATH) as im:
         orig_w, orig_h = im.size
         aspect = orig_w / float(orig_h)
         target_h = target_w / aspect
 
-    # Cap maximum height to ensure clean page fit
-    if target_h > 290:
-        target_h = 290
+    if target_h > 280:
+        target_h = 280
         target_w = target_h * aspect
 
-    img_table = Table([[Image(diag_path, width=target_w, height=target_h)]], colWidths=[532])
+    img_table = Table([[Image(INFOGRAPHIC_PATH, width=target_w, height=target_h)]], colWidths=[532])
     img_table.setStyle(TableStyle([
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
@@ -168,17 +159,17 @@ def build_pdf():
     ]))
     story.append(img_table)
     story.append(Spacer(1, 4))
-    story.append(Paragraph("Figure 1: AegisEdge End-to-End Pipeline — Ephemeral Ingestion, ExecuTorch Detection Core, Ground-Contact Mapping & Conflict Analytics.", caption_style))
+    story.append(Paragraph("Figure 1: AegisEdge AI Architecture Infographic — End-to-End Pipeline on Arm Cortex-A76 with Heuristic CED & Volatile DDR Privacy.", caption_style))
     
     story.append(Spacer(1, 14))
 
-    # 3. Master Google Drive Link Box (Prominent & Clean)
+    # 3. Master Google Drive Submission Box (With "Demo Video")
     drive_content = (
         f"<font size=11 color='#0F172A'><b>MASTER GOOGLE DRIVE SUBMISSION FOLDER:</b></font><br/>"
         f"<font size=10 color='#0284C7'><b><u><a href='{DRIVE_LINK}'>{DRIVE_LINK}</a></u></b></font><br/><br/>"
         f"<font size=8.5 color='#334155'>"
         f"<b>Hosted Deliverables in this Drive Folder:</b><br/>"
-        f"• <b>High-Quality Demo Video:</b> <code>AegisEdge_HighQuality_Demo.mp4</code> (720p HD, 60.00s Operations Dashboard with HUD telemetry)<br/>"
+        f"• <b>Demo Video:</b> <code>AegisEdge_HighQuality_Demo.mp4</code> (720p HD, 60.00s Operations Dashboard with HUD telemetry)<br/>"
         f"• <b>Complete Model Binary:</b> <code>complete_detector_net.pt</code> (14.76 MB PyTorch 2.x ExportedProgram for ExecuTorch)<br/>"
         f"• <b>Machine-Readable Telemetry:</b> <code>benchmark_report.json</code> (100-frame raw latency, FPS & counting error telemetry)<br/>"
         f"• <b>Academic Proposal Document:</b> <code>AegisEdge_Project_Proposal_PS2.pdf</code> (7-Page Proposal Document)<br/>"
@@ -199,7 +190,7 @@ def build_pdf():
 
     story.append(Spacer(1, 10))
 
-    # 4. GitHub Code Repository Box (Clean & Minimalist)
+    # 4. GitHub Code Repository Box
     git_content = (
         f"<font size=9.5 color='#0F172A'><b>PUBLIC GITHUB REPOSITORY (SOURCE CODE & SCRIPTS):</b></font><br/>"
         f"<font size=9.0 color='#0052CC'><b><u><a href='{GITHUB_LINK}'>{GITHUB_LINK}</a></u></b></font> &nbsp;|&nbsp; "

@@ -1,17 +1,16 @@
 # AegisEdge — Master Submission Document
-**Namma AI Hackathon 2026**  
-**Track:** Problem Statement 2 — AI for Safer Communities: Edge-Based Object Detection and Counting  
-**Organizers:** Nasscom CoE – IoT & AI | Arm | IIIT Bangalore | Supported by UK-India Technology Security Initiative  
-**System Architect & Contributor:** [Dharshantech17](https://github.com/Dharshantech17) (`dharshanselva2006@gmail.com`)  
-**Target Hardware:** Raspberry Pi 5 (Quad Cortex-A76 @ 2.4 GHz) | **Runtime:** Meta ExecuTorch 0.4+ with Arm XNNPACK (Neon SIMD)
+**Problem Statement 2: AI for Safer Communities — Edge-Based Object Detection and Counting**  
+**Organizers:** Nasscom CoE – IoT & AI | Arm | IIIT Bangalore | Supported by UK-India TSI  
+**Target Platform:** Raspberry Pi 5 (Quad-Core Arm Cortex-A76 @ 2.4 GHz) | **Runtime:** Meta ExecuTorch 0.4+ (Arm XNNPACK)  
+**System Architect & Contributor:** Dharshan S (Dharshantech17 | dharshanselva2006@gmail.com)
 
 ---
 
-### 🏛️ System Architecture & Data Flow Pipeline
+### 🏛️ AegisEdge AI Architecture Infographic
 
-![AegisEdge System Architecture](outputs/overall_architecture_diagram.png)
+![AegisEdge AI Architecture Infographic](outputs/AegisEdge%20AI%20Architecture%20Infographic.png)
 
-*Figure 1: AegisEdge End-to-End Pipeline — Ephemeral Ingestion, ExecuTorch Detection Core, Ground-Contact Mapping & Conflict Analytics.*
+*Figure 1: AegisEdge AI Architecture Infographic — End-to-End Pipeline on Arm Cortex-A76 with Heuristic CED & Volatile DDR Privacy.*
 
 ---
 
@@ -22,7 +21,7 @@
 > **Direct URL:** `https://drive.google.com/drive/folders/1TI-24bI7EP6mereBzB6yHRrzYKseYXGi?usp=sharing`
 > 
 > **Hosted Deliverables in this Drive Folder:**
-> * 🎥 **High-Quality Demo Video:** `AegisEdge_HighQuality_Demo.mp4` (720p HD, 60.00s Operations Dashboard with HUD telemetry, 20.72 MB)
+> * 🎥 **Demo Video:** `AegisEdge_HighQuality_Demo.mp4` (720p HD, 60.00s Operations Dashboard with HUD telemetry, 20.72 MB)
 > * 🧠 **Complete Model Binary:** `complete_detector_net.pt` (14.76 MB PyTorch 2.x ExportedProgram for ExecuTorch)
 > * 📊 **Machine-Readable Telemetry:** `benchmark_report.json` (100-frame raw latency, FPS & counting error telemetry, 74.4 KB)
 > * 📄 **Academic Proposal Document:** `AegisEdge_Project_Proposal_PS2.pdf` (7-Page Proposal Document, 2.74 MB)
