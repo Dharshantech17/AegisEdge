@@ -9,7 +9,6 @@ Minimalist layout:
 2. Architecture Infographic: outputs/AegisEdge AI Architecture Infographic.png
 3. Master Google Drive Link Box (clickable) with hosted deliverables summary
 4. Public GitHub Repository Link Box
-(Top metadata block and bottom footer removed as requested)
 """
 
 import os
@@ -127,11 +126,10 @@ def build_pdf():
 
     story.append(Spacer(1, 14))
 
-    # 4. GitHub Code Repository Box
+    # 4. GitHub Code Repository Box (Clean: Just the repository link)
     git_content = (
-        f"<font size=9.5 color='#0F172A'><b>PUBLIC GITHUB REPOSITORY (SOURCE CODE & SCRIPTS):</b></font><br/>"
-        f"<font size=9.0 color='#0052CC'><b><u><a href='{GITHUB_LINK}'>{GITHUB_LINK}</a></u></b></font> &nbsp;|&nbsp; "
-        f"<font size=8.0 color='#64748B'>Full Python/ExecuTorch export pipeline, latency benchmarks, and documentation.</font>"
+        f"<font size=9.5 color='#0F172A'><b>PUBLIC GITHUB REPOSITORY:</b></font><br/>"
+        f"<font size=9.0 color='#0052CC'><b><u><a href='{GITHUB_LINK}'>{GITHUB_LINK}</a></u></b></font>"
     )
     t_git = Table([[Paragraph(git_content, body_style)]], colWidths=[532])
     t_git.setStyle(TableStyle([
@@ -144,7 +142,7 @@ def build_pdf():
     ]))
     story.append(t_git)
 
-    # Build without footer (no onFirstPage / onLaterPages callback)
+    # Build without footer
     doc.build(story)
     print(f"[+] SUCCESS! Clean One-Page Summary PDF compiled at:")
     print(f"    --> {PDF_PATH}")

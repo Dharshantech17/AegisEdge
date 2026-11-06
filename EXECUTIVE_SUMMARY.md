@@ -26,7 +26,6 @@
 
 ---
 
-### 💻 Public GitHub Repository (Source Code & Scripts)
+### 💻 Public GitHub Repository
 
 * 🔗 **Repository URL:** [https://github.com/Dharshantech17/AegisEdge](https://github.com/Dharshantech17/AegisEdge)
-* Contains full Python/ExecuTorch export pipeline (`export/export_detector.py`), automated 100-frame latency benchmark harness (`benchmarks/run_benchmark.py`), test media generators, and complete documentation.
