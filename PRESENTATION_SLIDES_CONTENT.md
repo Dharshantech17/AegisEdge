@@ -253,7 +253,7 @@
 | Submission Deliverable | Access Link / Workspace Location | Size | Verification Status |
 | :--- | :--- | :--- | :--- |
 | **Public GitHub Repository** | `https://github.com/Dharshantech17/AegisEdge` | Full repo | Complete source code, export scripts & harness |
-| **Master Google Drive Link** | `<Your Public Google Drive Folder Link>` | Shared folder | Contains HD demo video, `.pt` model & benchmarks |
+| **Master Google Drive Link** | `https://drive.google.com/drive/folders/1TI-24bI7EP6mereBzB6yHRrzYKseYXGi?usp=sharing` | Shared folder | Contains HD demo video, `.pt` model & benchmarks |
 | **High-Quality Demo Video** | `outputs/AegisEdge_HighQuality_Demo.mp4` | 20.72 MB | 720p HD MP4 (25 FPS, exactly 60s / 1 min) |
 | **Complete Model Export** | `models/complete_detector_net.pt` | 14.76 MB | PyTorch 2.x `ExportedProgram` binary (AOT captured) |
 | **Machine-Readable Telemetry** | `outputs/benchmark_report.json` | 74.4 KB | 100-frame latency & counting JSON report |

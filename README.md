@@ -10,6 +10,8 @@
 ---
 
 ### 📑 Quick Access Deliverables
+* 📄 **[One-Page Executive Submission Summary PDF (1 Page)](outputs/AegisEdge_OnePage_Executive_Summary_PS2.pdf)** — High-density 1-page executive summary with verified metrics and active cloud links.
+* ☁️ **[Master Google Drive Folder (All Deliverables)](https://drive.google.com/drive/folders/1TI-24bI7EP6mereBzB6yHRrzYKseYXGi?usp=sharing)** — Cloud folder hosting HD demo video, `.pt` model, benchmark JSON, and submission PDFs.
 * 📄 **[Master Project Proposal PDF (7 Pages)](outputs/AegisEdge_Project_Proposal_PS2.pdf)** — Comprehensive architectural, mathematical, and ethical proposal.
 * 📊 **[Executive Deck & Benchmarks PDF (5 Pages)](outputs/AegisEdge_Executive_Deck_and_Benchmarks.pdf)** — Latency profile, throughput measurements, and validation proof.
 * 🎥 **[High-Quality Demo Video (60s / 720p HD)](outputs/AegisEdge_HighQuality_Demo.mp4)** — Full walkthrough of live detection, pavement contact points, and municipal telemetry.
@@ -257,6 +259,7 @@ AegisEdge/
 │   ├── sample_clip.mp4                    # 100-frame synthetic test video (25 FPS)
 │   └── sample_frame_*.jpg                 # 7 sequential test frames
 ├── outputs/
+│   ├── AegisEdge_OnePage_Executive_Summary_PS2.pdf # Master 1-Page Summary with Drive & Git Links (8.6 KB)
 │   ├── AegisEdge_Project_Proposal_PS2.pdf # Master Project Proposal (7 Pages, 2.74 MB)
 │   ├── AegisEdge_Executive_Deck_and_Benchmarks.pdf # Executive Deck & Benchmarks (5 Pages, 561 KB)
 │   ├── AegisEdge_HighQuality_Demo.mp4     # Presentation-Grade Demo Video (720p HD, 60s, 20.72 MB)
@@ -267,6 +270,7 @@ AegisEdge/
 │   └── equations/                         # High-res KaTeX equation assets for document generation
 └── scripts/
     ├── build_submission_pdfs.py           # Unified builder for Proposal and Deck PDFs
+    ├── generate_one_page_summary_pdf.py   # Master 1-page executive summary PDF generator
     ├── generate_perfect_proposal_pdf.py   # Master 7-page proposal PDF generator
     ├── generate_perfect_deck_pdf.py       # Master 5-page executive deck PDF generator
     ├── generate_demo_video.py             # 60s HD presentation demo video generator

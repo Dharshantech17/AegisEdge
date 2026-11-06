@@ -56,6 +56,7 @@ All mandatory files are located in your workspace:
 ```
 NAMMA AI/
 ├── outputs/
+│   ├── AegisEdge_OnePage_Executive_Summary_PS2.pdf   [8.6 KB]   --> Master 1-Page Summary with Drive & Git Links
 │   ├── AegisEdge_Project_Proposal_PS2.pdf          [2.74 MB]  --> UPLOAD TO PORTAL (SLOT 2)
 │   ├── AegisEdge_Executive_Deck_and_Benchmarks.pdf   [561 KB]   --> UPLOAD TO PORTAL (SLOT 1)
 │   ├── AegisEdge_HighQuality_Demo.mp4             [20.72 MB]  --> Host on Drive & Link in PDFs
@@ -79,9 +80,9 @@ NAMMA AI/
 1. **Push your code to your GitHub Repository:**
    * Create a public repository (e.g. `https://github.com/Dharshantech17/AegisEdge`).
    * Push the project files (`export/`, `inference/`, `benchmarks/`, `data/`, `models/`, `outputs/`, `README.md`, `requirements.txt`).
-2. **Upload Large Files to a Public Google Drive Folder:**
-   * Create a Google Drive folder set to *"Anyone with the link can view"*.
-   * Upload:
+2. **Verified Public Google Drive Master Deliverables Folder:**
+   * **Direct Link:** [https://drive.google.com/drive/folders/1TI-24bI7EP6mereBzB6yHRrzYKseYXGi?usp=sharing](https://drive.google.com/drive/folders/1TI-24bI7EP6mereBzB6yHRrzYKseYXGi?usp=sharing)
+   * **Hosted & Verified Files:**
      1. `AegisEdge_HighQuality_Demo.mp4` (60s HD video, 20.72 MB)
      2. `complete_detector_net.pt` (14.76 MB)
      3. `benchmark_report.json` (74.4 KB)

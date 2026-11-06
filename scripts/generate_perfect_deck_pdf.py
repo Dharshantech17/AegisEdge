@@ -654,6 +654,12 @@ def build_perfect_deck():
             Paragraph("Source code, lowering scripts & test media", styles['td'])
         ],
         [
+            Paragraph("Master Google Drive Link", styles['td']),
+            Paragraph("<font size=6.5><u>https://drive.google.com/drive/folders/1TI-24bI7EP6mereBzB6yHRrzYKseYXGi</u></font>", styles['td']),
+            Paragraph("Shared folder", styles['td']),
+            Paragraph("Hosts HD demo video, .pt model & telemetry", styles['td'])
+        ],
+        [
             Paragraph("High-Quality Demo Video", styles['td']),
             Paragraph("outputs/AegisEdge_HighQuality_Demo.mp4", styles['td']),
             Paragraph("20.72 MB", styles['td']),
