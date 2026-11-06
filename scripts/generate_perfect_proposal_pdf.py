@@ -384,7 +384,9 @@ def build_perfect_proposal():
     ))
 
     # Figure 2: Live AI Simulation (450 pt wide x 230 pt high)
-    frame_450 = os.path.join(QC_DIR, "frame_450.jpg")
+    frame_450 = os.path.join(OUTPUT_DIR, "sample_output_1_detection_hud.jpg")
+    if not os.path.exists(frame_450):
+        frame_450 = os.path.join(QC_DIR, "frame_450.jpg")
     if os.path.exists(frame_450):
         story.append(Image(frame_450, width=450, height=230, hAlign='CENTER'))
         story.append(Paragraph(
@@ -395,7 +397,9 @@ def build_perfect_proposal():
     story.append(Spacer(1, 4))
 
     # Figure 3: Municipal Crosswalk Report (450 pt wide x 230 pt high)
-    frame_950 = os.path.join(QC_DIR, "frame_950.jpg")
+    frame_950 = os.path.join(OUTPUT_DIR, "sample_output_2_municipal_report.jpg")
+    if not os.path.exists(frame_950):
+        frame_950 = os.path.join(QC_DIR, "frame_950.jpg")
     if os.path.exists(frame_950):
         story.append(Image(frame_950, width=450, height=230, hAlign='CENTER'))
         story.append(Paragraph(
